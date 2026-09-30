@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase – AI-Powered Legal Document Generator</title>
+    <meta name="description" content="Draft, customize, edit, and export attorney-grade legal documents in seconds with Google Gemini AI. Complete with PDF, DOCX, and TXT downloads.">
+    
+    <!-- Google Fonts: Inter & Newsreader / Playfair -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" type="image/png" href="/static/assets/logo.png">
+</head>
+<body data-theme-color="navy" data-font="modern">
+
+    <!-- ==========================================
+         Navigation Bar
+         ========================================== -->
+    <header class="navbar" id="mainNavbar">
+        <div class="container nav-container">
+            <a href="#homeSection" class="nav-brand" data-nav="home">
+                <div class="nav-logo-badge">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M5 7l7-3 7 3M4 11l3-6 3 6M14 11l3-6 3 6M4 11h6M14 11h6M3 21h18"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Legal<span>Ease</span></h1>
+                    <div class="brand-tagline">AI Legal Document Generator</div>
+                </div>
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#homeSection" class="nav-link active" data-nav="home">Home</a></li>
+                    <li><a href="#createSection" class="nav-link" data-nav="create">Create Document</a></li>
+                    <li><a href="#studioSection" class="nav-link" data-nav="studio">Document Studio</a></li>
+                    <li><a href="#customizationSection" class="nav-link" data-nav="customization">Customization</a></li>
+                    <li><a href="#summarySection" class="nav-link" data-nav="summary">Summary</a></li>
+                    <li><a href="#templatesSection" class="nav-link" data-nav="templates">Templates</a></li>
+                    <li><a href="#aboutSection" class="nav-link" data-nav="about">About</a></li>
+                    <li><a href="#helpSection" class="nav-link" data-nav="help">Help</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <div id="apiStatusBadge" class="status-badge" title="AI Engine Status">
+                    <span class="status-indicator"></span>
+                    <span id="apiStatusText">Checking AI Engine...</span>
+                </div>
+                
+                <button id="openApiKeyModalBtn" class="btn btn-icon" title="Configure Google Gemini API Key">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </button>
+
+                <a href="#createSection" class="btn btn-primary nav-cta-btn">
+                    <span>Create Document</span>
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         PAGE 1: HOME
+         ========================================== -->
+    <section id="homeSection" class="home-page-wrapper">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-pill">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M5 7l7-3 7 3M4 11l3-6 3 6M14 11l3-6 3 6M4 11h6M14 11h6M3 21h18"/></svg>
+                        <span>Google Gemini AI &bull; Attorney-Grade Legal Synthesis</span>
+                    </div>
+                    
+                    <h1 class="hero-title">Create Professional Legal Documents with <span class="highlight">AI</span></h1>
+                    
+                    <p class="hero-desc">
+                        Draft, customize, and execute attorney-grade contracts, non-disclosure agreements, residential leases, and commercial covenants in seconds. 
+                        Powered by Google Gemini with in-browser editing, custom branding, and instant downloads in PDF, DOCX, and TXT.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#createSection" class="btn btn-gold btn-lg">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <span>Create Document</span>
+                        </a>
+                        <a href="#templatesSection" class="btn btn-secondary btn-lg">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                            <span>Explore Templates</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Bar -->
+                    <div class="hero-trust-bar">
+                        <div class="trust-item">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="color: #10b981;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>Zero Hallucination Guard</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="color: #10b981;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>PDF, DOCX & TXT Exports</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="color: #10b981;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>Custom Logo & Styling</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="color: #10b981;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span>Privacy & Security First</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Legal / AI Visual Showcase -->
+                <div class="hero-visual-card">
+                    <div class="visual-header">
+                        <div class="mac-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="visual-doc-badge">
+                            <span class="badge-icon">⚖️</span>
+                            <span>Standard Mutual Non-Disclosure Agreement.pdf</span>
+                        </div>
+                        <div class="visual-pill-verified">AI Verified &bull; Strict Enforceability</div>
+                    </div>
+                    <div class="visual-preview-body">
+                        <div class="visual-contract-snippet">
+                            <div class="snippet-title">STANDARD MUTUAL NON-DISCLOSURE AGREEMENT</div>
+                            <div class="snippet-meta">EFFECTIVE DATE: OCTOBER 01, 2026 | JURISDICTION: STATE OF DELAWARE</div>
+                            <div class="snippet-divider"></div>
+                            <p><strong>PREAMBLE:</strong> This Agreement is entered into by and between <em>Nova BioTech Solutions LLC</em> and <em>Horizon Ventures Capital Fund LP</em>...</p>
+                            <p><strong>SECTION 1. CONFIDENTIAL INFORMATION:</strong> "Confidential Information" encompasses all proprietary algorithms, clinical trial reports, patent claims, and financial projections...</p>
+                            <div class="visual-signature-row">
+                                <div class="sig-box">
+                                    <div class="sig-line"></div>
+                                    <span>Authorized Signature (Disclosing Party)</span>
+                                </div>
+                                <div class="sig-box">
+                                    <div class="sig-line"></div>
+                                    <span>Authorized Signature (Receiving Party)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Document Types Section -->
+        <section class="section bg-light" id="supportedSection">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Versatile Document Engine</span>
+                    <h2 class="section-title">Supported Legal Document Types</h2>
+                    <p class="section-subtitle">Select any category to auto-load attorney-crafted parameters directly into the generation studio.</p>
+                </div>
+
+                <div class="doc-types-grid">
+                    <!-- 1. Employment Contract -->
+                    <div class="doc-card active" data-type="Employment Contract">
+                        <div class="doc-card-badge">HR & Corporate</div>
+                        <div class="doc-icon-badge">💼</div>
+                        <h3 class="doc-card-title">Employment Contract</h3>
+                        <p class="doc-card-desc">Comprehensive employer-employee agreements with salary, equity, benefits, confidentiality, and termination terms.</p>
+                        <div class="doc-card-footer">
+                            <span>Select Document</span>
+                            <span class="arrow">&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. NDA -->
+                    <div class="doc-card" data-type="NDA">
+                        <div class="doc-card-badge">Confidentiality</div>
+                        <div class="doc-icon-badge">🔒</div>
+                        <h3 class="doc-card-title">NDA (Non-Disclosure)</h3>
+                        <p class="doc-card-desc">Mutual or unilateral confidentiality covenants safeguarding trade secrets, proprietary IP, and strategic deal negotiations.</p>
+                        <div class="doc-card-footer">
+                            <span>Select Document</span>
+                            <span class="arrow">&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Residential Lease Agreement -->
+                    <div class="doc-card" data-type="Residential Lease Agreement">
+                        <div class="doc-card-badge">Real Estate</div>
+                        <div class="doc-icon-badge">🏢</div>
+                        <h3 class="doc-card-title">Residential Lease</h3>
+                        <p class="doc-card-desc">Residential and commercial tenancy contracts detailing rent schedules, security deposits, maintenance, and quiet enjoyment.</p>
+                        <div class="doc-card-footer">
+                            <span>Select Document</span>
+                            <span class="arrow">&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Freelance Agreement -->
+                    <div class="doc-card" data-type="Freelance Agreement">
+                        <div class="doc-card-badge">Contracting</div>
+                        <div class="doc-icon-badge">⚡</div>
+                        <h3 class="doc-card-title">Freelance Agreement</h3>
+                        <p class="doc-card-desc">Independent contractor agreements covering deliverables, milestone payments, copyright assignment, and liability limits.</p>
+                        <div class="doc-card-footer">
+                            <span>Select Document</span>
+                            <span class="arrow">&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Service Agreement -->
+                    <div class="doc-card" data-type="Service Agreement">
+                        <div class="doc-card-badge">B2B Commercial</div>
+                        <div class="doc-icon-badge">🤝</div>
+                        <h3 class="doc-card-title">Service Agreement</h3>
+                        <p class="doc-card-desc">Master Professional Services Agreements (MSA) with SLAs, uptime targets, data privacy, and liability caps.</p>
+                        <div class="doc-card-footer">
+                            <span>Select Document</span>
+                            <span class="arrow">&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Custom Legal Document -->
+                    <div class="doc-card" data-type="Custom Legal Document">
+                        <div class="doc-card-badge">Bespoke</div>
+                        <div class="doc-icon-badge">📜</div>
+                        <h3 class="doc-card-title">Custom Legal Document</h3>
+                        <p class="doc-card-desc">Fully bespoke contractual framework for partnerships, promissory notes, licensing, and asset sale agreements.</p>
+                        <div class="doc-card-footer">
+                            <span>Select Document</span>
+                            <span class="arrow">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" id="featuresSection">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Built for Precision</span>
+                    <h2 class="section-title">Enterprise Legal-Tech Capabilities</h2>
+                    <p class="section-subtitle">Combining cutting-edge artificial intelligence with rigorous contractual standards.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🎯</div>
+                        <h3>Zero Hallucination Guard</h3>
+                        <p>Strict parameter fidelity ensures the AI never invents non-existent numbers, entities, or arbitrary clauses. Unstated terms use formal bracketed placeholders.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">✍️</div>
+                        <h3>In-Browser Document Studio</h3>
+                        <p>Seamlessly toggle between attorney-styled document view and a live Markdown editor. Tweak specific clauses in real-time before finalizing.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">📄</div>
+                        <h3>Multi-Format Export Suite</h3>
+                        <p>Download clean text, beautifully styled Word DOCX files with letterheads, or vector-sharp PDFs with dynamic running headers and page numbers.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🎨</div>
+                        <h3>Custom Branding Studio</h3>
+                        <p>Upload your law firm or company logo, configure letterheads, adjust typography, customize signatory blocks, and choose professional color themes.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">📊</div>
+                        <h3>Auto Document Summary</h3>
+                        <p>Every generated agreement automatically extracts key covenants into a clean, executive-ready summary table covering parties, duration, rent, and terms.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🔐</div>
+                        <h3>Security & Privacy First</h3>
+                        <p>Your confidential agreements and trade secret parameters remain confidential. API keys are handled securely through environment variables and session memory.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section bg-light" id="howItWorksSection">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Seamless 4-Step Flow</span>
+                    <h2 class="section-title">How LegalEase Works</h2>
+                    <p class="section-subtitle">From custom inputs to signed legal instruments in minutes.</p>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-card">
+                        <div class="workflow-step-num">1</div>
+                        <h3>Select Document Type</h3>
+                        <p>Choose from Employment, NDA, Lease, Freelance, Service, or Custom Agreement, or pick from our curated template library.</p>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-step-num">2</div>
+                        <h3>Enter Specific Details</h3>
+                        <p>Our dynamic form adapts immediately, requesting exactly the parties, dates, compensation, and operational covenants needed.</p>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-step-num">3</div>
+                        <h3>AI Legal Generation</h3>
+                        <p>Google Gemini AI synthesizes comprehensive recitals, numbered articles, liability protections, and execution tables.</p>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-step-num">4</div>
+                        <h3>Customize & Download</h3>
+                        <p>Review the clean summary table, brand with your logo, refine text in the editor, and download as PDF, DOCX, or TXT.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security & Privacy Section -->
+        <section class="section" id="securitySection">
+            <div class="container">
+                <div class="security-card">
+                    <div class="security-content">
+                        <span class="section-tag" style="background: rgba(37, 99, 235, 0.1); color: #2563eb;">Enterprise Security</span>
+                        <h2>Bank-Grade Confidentiality & Privacy</h2>
+                        <p>At LegalEase, we treat legal data with the highest fiduciary responsibility. Your contract terms and party details are never stored publicly, never sold to data brokers, and never used to train external public models without authorization.</p>
+                        
+                        <div class="security-features-row">
+                            <div class="sec-item">
+                                <div class="sec-icon">🔒</div>
+                                <div>
+                                    <strong>In-Memory Processing</strong>
+                                    <p>Documents are generated and rendered in your secure session context.</p>
+                                </div>
+                            </div>
+                            <div class="sec-item">
+                                <div class="sec-icon">🔑</div>
+                                <div>
+                                    <strong>Encrypted API Keys</strong>
+                                    <p>Gemini API keys stay protected in server environment variables or isolated session storage.</p>
+                                </div>
+                            </div>
+                            <div class="sec-item">
+                                <div class="sec-icon">⚖️</div>
+                                <div>
+                                    <strong>Attorney Review First</strong>
+                                    <p>Standardized disclaimer ensures compliance with state bar ethics and informational standards.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- ==========================================
+         PAGE 2: CREATE DOCUMENT (Dynamic Form)
+         ========================================== -->
+    <section id="createSection" class="section studio-section">
+        <div class="container">
+            <div class="section-header text-left">
+                <span class="section-tag">Interactive Drafting</span>
+                <h2 class="section-title">Create Customized Legal Document</h2>
+                <p class="section-subtitle">Select your agreement type below to display a tailored dynamic form collecting exact party roles, dates, compensation, and terms.</p>
+            </div>
+
+            <!-- Preset Pills Bar -->
+            <div class="quick-preset-bar">
+                <span class="preset-label">Quick Preset:</span>
+                <button type="button" class="preset-pill active" data-template="Employment Contract">Employment</button>
+                <button type="button" class="preset-pill" data-template="NDA">NDA</button>
+                <button type="button" class="preset-pill" data-template="Residential Lease Agreement">Residential Lease</button>
+                <button type="button" class="preset-pill" data-template="Freelance Agreement">Freelance</button>
+                <button type="button" class="preset-pill" data-template="Service Agreement">Service (MSA)</button>
+                <button type="button" class="preset-pill" data-template="Custom Legal Document">Custom</button>
+            </div>
+
+            <div class="form-container-card">
+                <form id="docGeneratorForm" onsubmit="return false;">
+                    
+                    <div class="form-grid-2col">
+                        <!-- Document Type -->
+                        <div class="form-group">
+                            <label for="docTypeSelect">
+                                <span>Document Type</span>
+                                <span class="required-indicator">*</span>
+                            </label>
+                            <select id="docTypeSelect" class="form-control">
+                                <option value="Employment Contract">Employment Contract</option>
+                                <option value="NDA">NDA (Non-Disclosure Agreement)</option>
+                                <option value="Residential Lease Agreement">Residential Lease Agreement</option>
+                                <option value="Freelance Agreement">Freelance Agreement</option>
+                                <option value="Service Agreement">Service Agreement (MSA)</option>
+                                <option value="Custom Legal Document">Custom Legal Document</option>
+                            </select>
+                            <span class="field-hint">Dynamic fields below update automatically based on your selection.</span>
+                        </div>
+
+                        <!-- Effective Date -->
+                        <div class="form-group">
+                            <label for="effectiveDateInput">
+                                <span>Effective Date</span>
+                                <span class="required-indicator">*</span>
+                            </label>
+                            <input type="date" id="effectiveDateInput" class="form-control" required>
+                            <span class="field-hint">The binding date on which obligations legally commence.</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Parties Row -->
+                    <div class="form-group">
+                        <label for="partiesInput" id="partiesLabel">
+                            <span>Parties Involved & Legal Entities</span>
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <textarea id="partiesInput" class="form-control" rows="3" placeholder="Employer: Acme Corp, a Delaware Corp (100 Tech Way)\nEmployee: John Doe (123 Elm St)" required></textarea>
+                        <span class="field-hint" id="partiesHint">Specify names, entity registrations (LLC, Inc), and physical notice addresses.</span>
+                    </div>
+
+                    <!-- Dynamic Compensation / Rent & Duration Row -->
+                    <div class="form-grid-2col">
+                        <div class="form-group">
+                            <label for="compensationInput" id="compLabel">
+                                <span>Compensation, Rent or Fees</span>
+                            </label>
+                            <input type="text" id="compensationInput" class="form-control" placeholder="e.g. $175,000 per annum + 25,000 ISO options">
+                            <span class="field-hint" id="compHint">Salary, monthly rent, milestone fee, or mutual consideration.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="durationInput" id="durationLabel">
+                                <span>Duration / Term of Agreement</span>
+                            </label>
+                            <input type="text" id="durationInput" class="form-control" placeholder="e.g. Continuous At-Will Employment / 12 Months Fixed">
+                            <span class="field-hint" id="durationHint">Contract length, expiry date, or notice requirements.</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Terms & Covenants -->
+                    <div class="form-group">
+                        <label for="termsInput" id="termsLabel">
+                            <span>Key Terms, Obligations & Responsibilities</span>
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <textarea id="termsInput" class="form-control" rows="4" placeholder="Detail the core covenants, deliverables, work scope, responsibilities, and operational conditions..." required></textarea>
+                        <span class="field-hint" id="termsHint">Explain what each party must do, deliver, maintain, or refrain from doing.</span>
+                    </div>
+
+                    <!-- Governing Law & Custom Instructions -->
+                    <div class="form-grid-2col">
+                        <div class="form-group">
+                            <label for="governingLawInput">
+                                <span>Governing Law & Jurisdiction</span>
+                            </label>
+                            <input type="text" id="governingLawInput" class="form-control" placeholder="e.g. State of Delaware, USA">
+                            <span class="field-hint">The applicable state or country statute governing dispute resolution.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="instructionsInput">
+                                <span>Additional Clauses & Instructions</span>
+                            </label>
+                            <input type="text" id="instructionsInput" class="form-control" placeholder="e.g. Include 12-month non-solicitation, 30-day notice, mediation clause">
+                            <span class="field-hint">Special clauses, carve-outs, or restrictive covenants.</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-action-row">
+                        <button type="button" id="generateBtn" class="btn btn-primary btn-xl">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M5 7l7-3 7 3M4 11l3-6 3 6M14 11l3-6 3 6M4 11h6M14 11h6M3 21h18"/></svg>
+                            <span>Generate Document with AI</span>
+                        </button>
+                        <button type="button" id="resetFormBtn" class="btn btn-secondary">
+                            <span>Reset Fields</span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 3: AI DOCUMENT GENERATOR & STUDIO PREVIEW
+         ========================================== -->
+    <section id="studioSection" class="section bg-light">
+        <div class="container">
+            <div class="section-header text-left">
+                <span class="section-tag">Document Studio</span>
+                <h2 class="section-title">Live Preview, Editor & Downloads</h2>
+                <p class="section-subtitle">Review the structured legal agreement, edit clauses directly in-browser, regenerate with one click, or export to PDF, DOCX, and TXT.</p>
+            </div>
+
+            <div class="studio-card">
+                
+                <!-- Action Toolbar -->
+                <div class="preview-toolbar">
+                    <div class="doc-meta-stats">
+                        <span id="statWordCount">0 words</span>
+                        <span class="dot">&bull;</span>
+                        <span id="statReadTime">0 min read</span>
+                        <span class="dot">&bull;</span>
+                        <span id="statClauses">0 clauses</span>
+                    </div>
+
+                    <div class="toolbar-actions">
+                        <button id="editToggleBtn" class="btn btn-secondary btn-sm" disabled title="Toggle in-browser editing mode">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <span>Edit Document</span>
+                        </button>
+                        <button id="regenerateBtn" class="btn btn-secondary btn-sm" disabled title="Regenerate document with current parameters">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                            <span>Regenerate</span>
+                        </button>
+                        <button id="copyTextBtn" class="btn btn-secondary btn-sm" disabled title="Copy full markdown text to clipboard">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                        <button id="printDocBtn" class="btn btn-secondary btn-sm" disabled title="Print document">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                            <span>Print</span>
+                        </button>
+
+                        <div class="export-dropdown-group">
+                            <button id="downloadTxtBtn" class="btn btn-secondary btn-sm" disabled title="Download clean plain text">.TXT</button>
+                            <button id="downloadDocxBtn" class="btn btn-primary btn-sm" disabled title="Download formatted Microsoft Word document">.DOCX</button>
+                            <button id="downloadPdfBtn" class="btn btn-gold btn-sm" disabled title="Download print-ready vector PDF">.PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Paper Studio Wrapper -->
+                <div class="paper-wrapper">
+                    
+                    <!-- Loading Overlay Animation -->
+                    <div id="loadingOverlay" class="loading-overlay">
+                        <div class="spinner"></div>
+                        <h3 class="loading-title">Synthesizing Legal Instrument</h3>
+                        <p class="loading-subtitle">Applying zero-hallucination legal drafting standards</p>
+                        <ul class="loading-steps">
+                            <li class="loading-step active" id="step1">1. Ingesting party identities and core covenants...</li>
+                            <li class="loading-step" id="step2">2. Synthesizing enforceable clauses & recitals...</li>
+                            <li class="loading-step" id="step3">3. Structuring execution blocks and signature tables...</li>
+                            <li class="loading-step" id="step4">4. Performing factual compliance check...</li>
+                        </ul>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyPreviewState" class="paper-document empty-preview-state">
+                        <div class="empty-icon">⚖️</div>
+                        <h3>Document Preview Studio</h3>
+                        <p>
+                            Configure your document parameters in <strong>Create Document</strong> above or choose a preset from <strong>Templates</strong>, then click <strong>Generate Document with AI</strong> to synthesize your legally sound agreement.
+                        </p>
+                        <a href="#createSection" class="btn btn-primary">Start Drafting Now</a>
+                    </div>
+
+                    <!-- Rendered Paper Document -->
+                    <div id="paperDocument" class="paper-document" style="display: none;">
+                        
+                        <!-- Formal Letterhead -->
+                        <div class="paper-letterhead" id="paperLetterhead">
+                            <div class="letterhead-brand">
+                                <div id="letterheadLogoContainer" class="letterhead-logo-container">
+                                    <div class="letterhead-default-logo">⚖</div>
+                                </div>
+                                <div>
+                                    <div class="letterhead-company" id="letterheadCompany">LegalEase Client</div>
+                                    <div class="letterhead-sub" id="letterheadDocTitle">Official Legal Instrument</div>
+                                </div>
+                            </div>
+                            <div class="letterhead-meta">
+                                <div><strong>Category:</strong> <span id="letterheadType">Employment Agreement</span></div>
+                                <div><strong>Effective Date:</strong> <span id="letterheadDate">2026-10-01</span></div>
+                                <div class="badge-verified" id="engineTag">AI Verified</div>
+                            </div>
+                        </div>
+
+                        <!-- Accent Bar -->
+                        <div class="paper-accent-bar" id="paperAccentBar"></div>
+
+                        <!-- Formatted Contract Body -->
+                        <div id="paperContent" class="paper-content"></div>
+
+                        <!-- In-Browser Document Editor -->
+                        <div id="paperEditorContainer" class="paper-editor-container" style="display: none;">
+                            <div class="editor-header-bar">
+                                <span>Markdown Legal Editor &bull; Real-Time Direct Editing</span>
+                                <span class="editor-tip">Changes will instantly reflect in PDF/DOCX downloads</span>
+                            </div>
+                            <textarea id="paperEditor" class="paper-editor" spellcheck="false" placeholder="Document markdown text..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Legal Notice Footer Box -->
+                <div class="disclaimer-box">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20" style="flex-shrink: 0;"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    <div>
+                        <strong>Legal Disclaimer:</strong> LegalEase provides AI-assisted document drafting for informational purposes and does not provide legal advice. Users should consult a qualified legal professional when appropriate.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 4: DOCUMENT CUSTOMIZATION
+         ========================================== -->
+    <section id="customizationSection" class="section">
+        <div class="container">
+            <div class="section-header text-left">
+                <span class="section-tag">Brand & Presentation</span>
+                <h2 class="section-title">Document Customization Studio</h2>
+                <p class="section-subtitle">Personalize your document letterhead, typography, header and footer notices, signatory blocks, and accent styling.</p>
+            </div>
+
+            <div class="customization-grid">
+                
+                <!-- Left: Controls -->
+                <div class="customization-controls-card">
+                    
+                    <!-- Company Logo Upload -->
+                    <div class="control-section">
+                        <h4>Company / Law Firm Logo</h4>
+                        <p class="field-hint">Upload a transparent PNG, JPEG, or SVG logo to embed on document letterhead, PDF, and DOCX.</p>
+                        
+                        <div class="logo-upload-wrapper">
+                            <div class="logo-preview-box" id="logoPreviewBox">
+                                <span id="logoPlaceholderText">No Logo Uploaded</span>
+                                <img id="uploadedLogoImg" src="" alt="Custom Logo" style="display: none; max-width: 100%; max-height: 50px;">
+                            </div>
+                            <div class="logo-buttons">
+                                <label for="logoFileInput" class="btn btn-secondary btn-sm" style="cursor: pointer;">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                    <span>Upload Logo</span>
+                                </label>
+                                <input type="file" id="logoFileInput" accept="image/png, image/jpeg, image/svg+xml" style="display: none;">
+                                <button type="button" id="removeLogoBtn" class="btn btn-sm btn-outline-danger" style="display: none;">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Name & Title -->
+                    <div class="control-section">
+                        <h4>Entity & Title Information</h4>
+                        <div class="form-group">
+                            <label for="customCompanyInput">Company / Organization Name</label>
+                            <input type="text" id="customCompanyInput" class="form-control" placeholder="e.g. Apex Legal Technologies Inc." value="LegalEase Client">
+                        </div>
+                        <div class="form-group">
+                            <label for="customTitleInput">Document Title Override</label>
+                            <input type="text" id="customTitleInput" class="form-control" placeholder="Leave blank to use default generated title">
+                        </div>
+                    </div>
+
+                    <!-- Typography Selection -->
+                    <div class="control-section">
+                        <h4>Font Family Selection</h4>
+                        <div class="font-selector-grid">
+                            <label class="font-option active" data-font="modern">
+                                <input type="radio" name="fontSelection" value="Helvetica" checked>
+                                <div class="font-info">
+                                    <span class="font-sample" style="font-family: 'Inter', sans-serif;">Modern Sans</span>
+                                    <span class="font-desc">Inter / Arial &bull; Clean SaaS Style</span>
+                                </div>
+                            </label>
+                            <label class="font-option" data-font="serif">
+                                <input type="radio" name="fontSelection" value="Times-Roman">
+                                <div class="font-info">
+                                    <span class="font-sample" style="font-family: 'Newsreader', serif;">Classic Legal</span>
+                                    <span class="font-desc">Times New Roman &bull; Courtroom Formal</span>
+                                </div>
+                            </label>
+                            <label class="font-option" data-font="mono">
+                                <input type="radio" name="fontSelection" value="Courier">
+                                <div class="font-info">
+                                    <span class="font-sample" style="font-family: 'JetBrains Mono', monospace;">Legal Monospace</span>
+                                    <span class="font-desc">Courier &bull; Draft & Statutory</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Accent Color Theme -->
+                    <div class="control-section">
+                        <h4>Document Accent Color</h4>
+                        <div class="color-palette-row">
+                            <div class="color-swatch active" data-color="#0F172A" style="background: #0F172A;" title="Deep Navy"></div>
+                            <div class="color-swatch" data-color="#1E3A8A" style="background: #1E3A8A;" title="Royal Blue"></div>
+                            <div class="color-swatch" data-color="#7F1D1D" style="background: #7F1D1D;" title="Executive Burgundy"></div>
+                            <div class="color-swatch" data-color="#064E3B" style="background: #064E3B;" title="Forest Green"></div>
+                            <div class="color-swatch" data-color="#334155" style="background: #334155;" title="Slate Charcoal"></div>
+                        </div>
+                    </div>
+
+                    <!-- Running Header & Footer Customization -->
+                    <div class="control-section">
+                        <h4>Running Header & Footer</h4>
+                        <div class="form-group">
+                            <label for="customHeaderInput">Running Header Text (Pages 2+)</label>
+                            <input type="text" id="customHeaderInput" class="form-control" value="CONFIDENTIAL LEGAL AGREEMENT">
+                        </div>
+                        <div class="form-group">
+                            <label for="customFooterInput">Running Footer Text</label>
+                            <input type="text" id="customFooterInput" class="form-control" value="Confidential &bull; Prepared with LegalEase AI">
+                        </div>
+                    </div>
+
+                    <!-- Signatories Configuration -->
+                    <div class="control-section">
+                        <h4>Signature Section Details</h4>
+                        <div class="sig-config-grid">
+                            <div class="sig-col">
+                                <strong>Party 1 Signatory</strong>
+                                <input type="text" id="sig1Name" class="form-control form-control-sm" placeholder="Signatory Full Name" value="Authorized Representative">
+                                <input type="text" id="sig1Title" class="form-control form-control-sm" placeholder="Official Title" value="Chief Executive Officer">
+                                <input type="text" id="sig1Entity" class="form-control form-control-sm" placeholder="Entity Name" value="First Party Corporation">
+                            </div>
+                            <div class="sig-col">
+                                <strong>Party 2 Signatory</strong>
+                                <input type="text" id="sig2Name" class="form-control form-control-sm" placeholder="Signatory Full Name" value="Second Party Signatory">
+                                <input type="text" id="sig2Title" class="form-control form-control-sm" placeholder="Official Title" value="Individual / Officer">
+                                <input type="text" id="sig2Entity" class="form-control form-control-sm" placeholder="Entity Name" value="Second Party">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" id="applyCustomizationBtn" class="btn btn-primary" style="width: 100%;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>Apply Customization to Studio & Exports</span>
+                    </button>
+
+                </div>
+
+                <!-- Right: Live Letterhead & Styling Preview -->
+                <div class="customization-preview-card">
+                    <div class="preview-card-header">
+                        <span>Live Letterhead & Styling Preview</span>
+                        <span class="preview-badge">Interactive</span>
+                    </div>
+
+                    <div class="live-mock-sheet" id="liveMockSheet">
+                        <div class="mock-letterhead" id="mockLetterhead">
+                            <div class="mock-logo-area" id="mockLogoArea">
+                                <span class="mock-scale-icon">⚖️</span>
+                            </div>
+                            <div class="mock-brand-text">
+                                <h3 id="mockCompanyName">LegalEase Client</h3>
+                                <p id="mockDocTitle">STANDARD EMPLOYMENT AGREEMENT</p>
+                            </div>
+                        </div>
+                        <div class="mock-accent-line" id="mockAccentLine"></div>
+
+                        <div class="mock-meta-row">
+                            <span>CATEGORY: EMPLOYMENT CONTRACT</span>
+                            <span>DATE: 2026-10-01</span>
+                            <span>PAGE 1 OF 3</span>
+                        </div>
+
+                        <div class="mock-paragraphs" id="mockParagraphs">
+                            <p><strong>PREAMBLE:</strong> This Agreement is entered into between Employer and Employee...</p>
+                            <p><strong>SECTION 1. DUTIES:</strong> Employee shall execute professional duties with fidelity and care...</p>
+                            <p><strong>SECTION 2. COMPENSATION:</strong> Employer shall remit compensation as agreed...</p>
+                        </div>
+
+                        <!-- Mock Signature Table -->
+                        <div class="mock-sig-table">
+                            <div class="mock-sig-cell">
+                                <div class="mock-line"></div>
+                                <span id="mockSig1Info">Authorized Representative (CEO)</span>
+                            </div>
+                            <div class="mock-sig-cell">
+                                <div class="mock-line"></div>
+                                <span id="mockSig2Info">Second Party Signatory</span>
+                            </div>
+                        </div>
+
+                        <div class="mock-footer">
+                            <span id="mockFooterNote">Confidential &bull; Prepared with LegalEase AI</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 5: DOCUMENT SUMMARY
+         ========================================== -->
+    <section id="summarySection" class="section bg-light">
+        <div class="container">
+            <div class="section-header text-left">
+                <span class="section-tag">Executive Summary</span>
+                <h2 class="section-title">Automated Document Summary Table</h2>
+                <p class="section-subtitle">Automatically parses your generated agreement and extracts key operational, financial, and legal terms into a structured overview.</p>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-header">
+                    <div>
+                        <h3 id="summaryDocTitle">Employment Agreement Summary</h3>
+                        <span class="field-hint" id="summaryDocTypeBadge">Category: Employment Contract</span>
+                    </div>
+                    <div class="summary-actions">
+                        <button type="button" id="copySummaryBtn" class="btn btn-secondary btn-sm">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Copy Table</span>
+                        </button>
+                        <button type="button" id="exportSummaryJsonBtn" class="btn btn-secondary btn-sm">
+                            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            <span>Export JSON</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="summary-table" id="summaryTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Term Metric</th>
+                                <th style="width: 75%;">Extracted Covenant Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="summary-icon">👥</span> <strong>Parties Involved</strong></td>
+                                <td id="sumParties">Employer: Apex Technologies Inc. &bull; Employee: Sarah Jenkins</td>
+                            </tr>
+                            <tr>
+                                <td><span class="summary-icon">📅</span> <strong>Effective Date</strong></td>
+                                <td id="sumDate">2026-10-01</td>
+                            </tr>
+                            <tr>
+                                <td><span class="summary-icon">⏳</span> <strong>Duration / Term</strong></td>
+                                <td id="sumDuration">Continuous At-Will Employment until terminated pursuant to Section 3</td>
+                            </tr>
+                            <tr>
+                                <td><span class="summary-icon">💰</span> <strong>Salary / Rent / Fees</strong></td>
+                                <td id="sumCompensation">$175,000 per annum + 25,000 ISO Stock Options</td>
+                            </tr>
+                            <tr>
+                                <td><span class="summary-icon">📋</span> <strong>Key Responsibilities</strong></td>
+                                <td id="sumResponsibilities">Perform full-time professional duties as Principal Architect; adhere to corporate handbook, non-disclosure, and fiduciary care.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="summary-icon">⚖️</span> <strong>Important Legal Terms</strong></td>
+                                <td id="sumTerms">Governing Law: State of California; 12-Month Non-Solicitation; Work-Made-for-Hire IP Assignment; Mutual Mediation.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="summary-footer-note">
+                    <span>Summary is extracted programmatically from active parameters and contract text. Review full agreement prior to execution.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 6: TEMPLATES GALLERY
+         ========================================== -->
+    <section id="templatesSection" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Curated Library</span>
+                <h2 class="section-title">Attorney-Crafted Template Presets</h2>
+                <p class="section-subtitle">Click "Use Template" on any card to immediately populate the dynamic form and start drafting.</p>
+            </div>
+
+            <div class="templates-grid" id="templatesContainer">
+                <!-- Dynamically rendered or pre-rendered cards -->
+                
+                <!-- 1. Employment -->
+                <div class="template-card">
+                    <div class="template-card-header">
+                        <span class="badge-cat">HR & Corporate</span>
+                        <span class="badge-pill">Most Popular</span>
+                    </div>
+                    <div class="template-icon">💼</div>
+                    <h3>Employment Contract</h3>
+                    <p class="template-desc">Comprehensive executive and professional employment agreement with salary, options, PTO, non-compete, and at-will terms.</p>
+                    <div class="template-clauses-box">
+                        <strong>Key Clauses:</strong>
+                        <ul>
+                            <li>Base Salary & Bonus Structure</li>
+                            <li>Equity Vesting Schedule (Cliff & Periodic)</li>
+                            <li>Proprietary Inventions Assignment</li>
+                            <li>Non-Solicitation & At-Will Notice</li>
+                        </ul>
+                    </div>
+                    <div class="template-best-for">
+                        <strong>Best For:</strong> Startups, Enterprises & Tech Hiring
+                    </div>
+                    <button type="button" class="btn btn-primary use-template-btn" data-template="Employment Contract">
+                        <span>Use Template</span>
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 2. NDA -->
+                <div class="template-card">
+                    <div class="template-card-header">
+                        <span class="badge-cat">Confidentiality</span>
+                        <span class="badge-pill">Essential</span>
+                    </div>
+                    <div class="template-icon">🔒</div>
+                    <h3>Non-Disclosure (NDA)</h3>
+                    <p class="template-desc">Bilateral or unilateral Non-Disclosure Agreement safeguarding sensitive trade secrets, technical source code, and financials.</p>
+                    <div class="template-clauses-box">
+                        <strong>Key Clauses:</strong>
+                        <ul>
+                            <li>Broad Definition of Proprietary Data</li>
+                            <li>Permitted Use Limitation & Duty of Care</li>
+                            <li>Injunction Relief Without Bond</li>
+                            <li>Perpetual Trade Secret Survival</li>
+                        </ul>
+                    </div>
+                    <div class="template-best-for">
+                        <strong>Best For:</strong> Founders, Investors, Dealmakers
+                    </div>
+                    <button type="button" class="btn btn-primary use-template-btn" data-template="NDA">
+                        <span>Use Template</span>
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 3. Residential Lease -->
+                <div class="template-card">
+                    <div class="template-card-header">
+                        <span class="badge-cat">Real Estate</span>
+                        <span class="badge-pill">Attorney-Approved</span>
+                    </div>
+                    <div class="template-icon">🏢</div>
+                    <h3>Residential Lease Agreement</h3>
+                    <p class="template-desc">Formal residential tenancy lease covering property descriptions, rent schedules, security deposits, utilities, and pet policies.</p>
+                    <div class="template-clauses-box">
+                        <strong>Key Clauses:</strong>
+                        <ul>
+                            <li>Premises & Parking Allocations</li>
+                            <li>Fixed 12-Month Tenancy Terms</li>
+                            <li>Security Deposit Escrow Compliance</li>
+                            <li>Maintenance Division & 24h Notice</li>
+                        </ul>
+                    </div>
+                    <div class="template-best-for">
+                        <strong>Best For:</strong> Landlords, Tenants & Property Managers
+                    </div>
+                    <button type="button" class="btn btn-primary use-template-btn" data-template="Residential Lease Agreement">
+                        <span>Use Template</span>
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 4. Freelance Agreement -->
+                <div class="template-card">
+                    <div class="template-card-header">
+                        <span class="badge-cat">Contracting</span>
+                        <span class="badge-pill">Milestone-Ready</span>
+                    </div>
+                    <div class="template-icon">⚡</div>
+                    <h3>Freelance Agreement</h3>
+                    <p class="template-desc">Independent contractor agreement defining deliverables, milestone payments, work-for-hire copyright transfer, and revision caps.</p>
+                    <div class="template-clauses-box">
+                        <strong>Key Clauses:</strong>
+                        <ul>
+                            <li>Independent Contractor Non-Employment</li>
+                            <li>Phased Milestones & Net-15 Invoicing</li>
+                            <li>Work-Made-for-Hire Copyright Assignment</li>
+                            <li>Scope Creep Protection & Revision Caps</li>
+                        </ul>
+                    </div>
+                    <div class="template-best-for">
+                        <strong>Best For:</strong> Freelancers, Consultancies & Agencies
+                    </div>
+                    <button type="button" class="btn btn-primary use-template-btn" data-template="Freelance Agreement">
+                        <span>Use Template</span>
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 5. Service Agreement -->
+                <div class="template-card">
+                    <div class="template-card-header">
+                        <span class="badge-cat">B2B Commercial</span>
+                        <span class="badge-pill">Enterprise SLA</span>
+                    </div>
+                    <div class="template-icon">🤝</div>
+                    <h3>Service Agreement (MSA)</h3>
+                    <p class="template-desc">Master Professional Services Agreement setting forth service level agreements (SLAs), cloud availability, support, and liability caps.</p>
+                    <div class="template-clauses-box">
+                        <strong>Key Clauses:</strong>
+                        <ul>
+                            <li>99.95% System Uptime SLA Guarantees</li>
+                            <li>Recurring Subscription & Quarterly Billing</li>
+                            <li>SOC 2 Data Protection Safeguards</li>
+                            <li>12-Month Total Fee Aggregate Liability Cap</li>
+                        </ul>
+                    </div>
+                    <div class="template-best-for">
+                        <strong>Best For:</strong> SaaS Vendors, MSPs, Cloud Providers
+                    </div>
+                    <button type="button" class="btn btn-primary use-template-btn" data-template="Service Agreement">
+                        <span>Use Template</span>
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+                <!-- 6. Custom Legal Document -->
+                <div class="template-card">
+                    <div class="template-card-header">
+                        <span class="badge-cat">Bespoke</span>
+                        <span class="badge-pill">Full Flexibility</span>
+                    </div>
+                    <div class="template-icon">📜</div>
+                    <h3>Custom Legal Document</h3>
+                    <p class="template-desc">Bespoke contractual framework supporting joint venture protocols, promissory notes, licensing, and asset sale agreements.</p>
+                    <div class="template-clauses-box">
+                        <strong>Key Clauses:</strong>
+                        <ul>
+                            <li>Custom Recitals & Preamble Setup</li>
+                            <li>Bespoke Consideration & Payment Rules</li>
+                            <li>Warranties, Representations & Indemnity</li>
+                            <li>Arbitration & Executive Escalation</li>
+                        </ul>
+                    </div>
+                    <div class="template-best-for">
+                        <strong>Best For:</strong> Specialized Deals, Joint Ventures
+                    </div>
+                    <button type="button" class="btn btn-primary use-template-btn" data-template="Custom Legal Document">
+                        <span>Use Template</span>
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 7: ABOUT
+         ========================================== -->
+    <section id="aboutSection" class="section bg-light">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text-col">
+                    <span class="section-tag">About LegalEase</span>
+                    <h2 class="section-title">Democratizing Attorney-Grade Legal Drafting</h2>
+                    <p class="lead-text">
+                        LegalEase was founded with a singular mission: to eliminate the friction, exorbitant costs, and delays of routine legal documentation through cutting-edge artificial intelligence.
+                    </p>
+                    <p>
+                        Traditional legal drafting is repetitive and prone to human drafting oversights. LegalEase harnesses Google Gemini's advanced reasoning models alongside a deterministic legal rules engine to synthesize enforceable, comprehensive agreements tailored to your specific business facts.
+                    </p>
+
+                    <div class="about-pillars">
+                        <div class="pillar-item">
+                            <div class="pillar-icon">⚖️</div>
+                            <div>
+                                <h4>Zero Hallucination Guarantee</h4>
+                                <p>Our strict prompt governance ensures the AI never creates fictional entities or sums.</p>
+                            </div>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-icon">⚡</div>
+                            <div>
+                                <h4>Instant Multi-Format Output</h4>
+                                <p>Generate PDF, DOCX, and TXT files ready for signature in under 5 seconds.</p>
+                            </div>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-icon">🛡️</div>
+                            <div>
+                                <h4>Privacy & Data Sovereign</h4>
+                                <p>Your commercial terms are never used to train public models without consent.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-stats-col">
+                    <div class="about-stat-box">
+                        <div class="stat-number">6+</div>
+                        <div class="stat-label">Core Document Categories</div>
+                        <p>Covering employment, confidentiality, leases, freelancing, services, and bespoke agreements.</p>
+                    </div>
+                    <div class="about-stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Zero Factual Hallucination Guard</div>
+                        <p>Strict parameter adherence with formal brackets for unstated legal parameters.</p>
+                    </div>
+                    <div class="about-stat-box">
+                        <div class="stat-number">3 Formats</div>
+                        <div class="stat-label">Printable PDF, Word & TXT</div>
+                        <p>Vector typography, running headers, and execution blocks formatted for signature.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 8: HELP & FAQS
+         ========================================== -->
+    <section id="helpSection" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Knowledge Base & Support</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find immediate answers on how to draft, edit, customize, and export legal agreements.</p>
+            </div>
+
+            <!-- Steps Guide -->
+            <div class="help-steps-card">
+                <h3>Quick Instructions: How to Generate & Download in 4 Steps</h3>
+                <div class="help-steps-grid">
+                    <div class="help-step-item">
+                        <div class="step-badge">Step 1</div>
+                        <h4>Choose Agreement</h4>
+                        <p>Select your agreement type from the dropdown or click a template card.</p>
+                    </div>
+                    <div class="help-step-item">
+                        <div class="step-badge">Step 2</div>
+                        <h4>Fill Parameters</h4>
+                        <p>Input parties, dates, compensation, and operational covenants in the dynamic form.</p>
+                    </div>
+                    <div class="help-step-item">
+                        <div class="step-badge">Step 3</div>
+                        <h4>Generate & Edit</h4>
+                        <p>Click "Generate Document", review the text, and use "Edit Document" to modify clauses.</p>
+                    </div>
+                    <div class="help-step-item">
+                        <div class="step-badge">Step 4</div>
+                        <h4>Brand & Download</h4>
+                        <p>Upload your logo in Customization, then download in PDF, DOCX, or TXT.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion FAQs -->
+            <div class="faq-accordion-list">
+                
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Are LegalEase documents legally binding?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, once formally executed by authorized representatives with valid legal capacity, mutual assent, and consideration, contracts generated through LegalEase function as binding agreements. However, statutory requirements vary across jurisdictions; we recommend reviewing critical agreements with a licensed attorney in your state.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>How does LegalEase prevent AI hallucinations?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>LegalEase enforces strict system instructions that prohibit the AI model from inventing unstated monetary figures, fake entities, or arbitrary deadlines. When specific jurisdictions or details are omitted, the engine uses standard attorney brackets like <code>[Jurisdiction]</code> rather than fabricating information.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>What formats can I download?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>LegalEase provides three high-fidelity export formats:
+                            <br/>&bull; <strong>PDF:</strong> Print-ready vector PDF generated via ReportLab with letterhead logo, running headers, and dynamic "Page X of Y" canvas.
+                            <br/>&bull; <strong>DOCX:</strong> Microsoft Word document with editable styles, margins, and signature tables.
+                            <br/>&bull; <strong>TXT:</strong> Clean UTF-8 formatted plain text.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>How do I add my custom Google Gemini API key?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Click the key icon (⚙️) in the top-right navigation bar to open the Gemini API configuration dialog. Enter your API key and click "Save Key". If no key is provided, LegalEase seamlessly utilizes its built-in High-Fidelity Legal Knowledge Synthesis Engine to generate complete agreements offline.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Can I customize the branding with my company logo?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Navigate to the <strong>Document Customization</strong> section, click "Upload Logo", and select any PNG or JPEG logo file. Your custom logo will immediately appear on the letterhead preview and be dynamically embedded into PDF and Word DOCX downloads.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Is my data kept confidential?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. LegalEase does not store your confidential agreements or party names on external public databases. All generation is processed securely and retained only within your current browser session.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Footer
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-scale">⚖️</span>
+                        <h2>Legal<span>Ease</span></h2>
+                    </div>
+                    <p>The modern legal-tech SaaS platform. Enabling businesses, founders, contractors, and individuals to draft, customize, and export attorney-grade legal contracts in seconds.</p>
+                    <div class="footer-badge">Powered by Google Gemini AI & Python FastAPI</div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Documents</h4>
+                    <ul class="footer-links">
+                        <li><a href="#createSection" data-template="Employment Contract">Employment Contract</a></li>
+                        <li><a href="#createSection" data-template="NDA">Non-Disclosure (NDA)</a></li>
+                        <li><a href="#createSection" data-template="Residential Lease Agreement">Residential Lease</a></li>
+                        <li><a href="#createSection" data-template="Freelance Agreement">Freelance Contract</a></li>
+                        <li><a href="#createSection" data-template="Service Agreement">Service Agreement (MSA)</a></li>
+                        <li><a href="#createSection" data-template="Custom Legal Document">Custom Document</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Studio & Exports</h4>
+                    <ul class="footer-links">
+                        <li><a href="#studioSection">In-Browser Editor</a></li>
+                        <li><a href="#customizationSection">Custom Branding & Logo</a></li>
+                        <li><a href="#summarySection">Automated Terms Summary</a></li>
+                        <li><a href="#studioSection">Print-Ready PDF (.pdf)</a></li>
+                        <li><a href="#studioSection">Microsoft Word (.docx)</a></li>
+                        <li><a href="#studioSection">Plain Text (.txt)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Compliance & Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="#aboutSection">About LegalEase</a></li>
+                        <li><a href="#helpSection">Help & Instructions</a></li>
+                        <li><a href="#helpSection">Frequently Asked Questions</a></li>
+                        <li><a href="#securitySection">Security & Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mandatory Global Disclaimer in Footer -->
+            <div class="footer-disclaimer-card">
+                <div class="disclaimer-badge">⚖️ LEGAL NOTICE</div>
+                <p>
+                    <strong>LegalEase provides AI-assisted document drafting for informational purposes and does not provide legal advice. Users should consult a qualified legal professional when appropriate.</strong>
+                </p>
+                <div class="disclaimer-sub">
+                    No attorney-client relationship is created by the use of this website or the generation of documents.
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 LegalEase Inc. All rights reserved. Professional Legal Technology Platform.</div>
+                <div>Designed with Dark Navy Accents & Vector Typography.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         API Key Settings Modal
+         ========================================== -->
+    <div id="apiKeyModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Google Gemini API Configuration</h3>
+                <button type="button" id="closeApiKeyModalBtn" class="modal-close">&times;</button>
+            </div>
+            <p class="modal-desc">
+                Provide your Google Gemini API key to activate real-time generative AI drafting. If omitted, LegalEase automatically utilizes its comprehensive built-in <strong>Legal Knowledge Synthesis Engine</strong>.
+            </p>
+            <div class="form-group">
+                <label for="apiKeyInput">Gemini API Key</label>
+                <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+                <p class="field-hint" style="margin-top: 0.4rem;">
+                    Keys are kept securely in your current browser session, or can be placed in <code>.env</code> on the server.
+                </p>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelApiKeyBtn">Cancel</button>
+                <button type="button" id="saveApiKeyBtn" class="btn btn-primary">Save API Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/templates.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
